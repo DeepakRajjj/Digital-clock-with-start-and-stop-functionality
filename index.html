@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body{
+            background-color: rgb(0, 0, 0);
+        }
+        p{
+            margin-bottom: 0;
+            margin-left: 150px;
+            margin-right: 150px;
+            padding: 20px;
+            font-size: 50px;
+            text-align: center;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(255, 234, 0);
+        }
+        h2{
+            /* background-color: beige; */
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 90px; 
+            margin-left: 12%;
+            margin-right: 12%;
+            margin-top: -15%;
+            font-family: Verdana;
+            font-size: 40px;
+        }
+        h1{
+            margin-top: 0;
+            margin-left: 150px;
+            margin-right: 150px;
+            padding: 100px;
+            font-size: 100px;
+            text-align: center;
+            vertical-align: middle;
+            font-family: Verdana;
+            background-color: rgb(1, 133, 186);
+        }
+        
+    </style>
+</head>
+<body onload="showTime()">
+    <p ><b>Digital Clock</b></p>
+    <h1></h1>
+    <h2></h2>
+    <div>
+        <button style="margin-left: 450px;padding: 1%; width: 120px;" onclick="startclock()"><b>Start</b></button>
+        <button style="margin-left: 150px;padding: 1%; width: 120px;" onclick="stopclock()"><b>Stop</b></button>
+    </div>
+    <script type="text/javascript">      
+         var intervalRef;
+        function showTime()
+        {
+            var d=new Date();
+            var h=d.getHours();
+            var m=d.getMinutes();
+            var s=d.getSeconds();
+            var session = "AM";
+            var dd = d.getDate();
+	        var mm = d.getMonth()+1;
+	        var yy = d.getFullYear();
+	//printing date
+	
+            if(h>=12)
+            {
+                session="PM";
+            }
+            if(h>12)
+            {
+                h=h-12;
+            }
+
+            h=h<10 ? "0"+h : h;
+            m=m<10 ? "0"+m : m;
+            s=s<10 ? "0"+s : s;
+
+            var time=h + ":" + m + ":" + s + " " + session; 
+            var period=dd + "/" + mm + "/" + yy;
+            document.getElementsByTagName('h2')[0].innerText=period;
+            document.getElementsByTagName('h1')[0].innerText=time;
+            //var xyz=setTimeout(showTime,1000);
+            intervalRef=setTimeout(showTime,1000);
+        }
+        function startclock()
+        {
+            showTime();
+        }  
+        function stopclock()
+        {
+            window.clearTimeout(intervalRef);
+            // clearInterval(xyz);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body{
+            background-color: rgb(0, 0, 0);
+        }
+        p{
+            margin-bottom: 0;
+            margin-left: 150px;
+            margin-right: 150px;
+            padding: 20px;
+            font-size: 50px;
+            text-align: center;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(255, 234, 0);
+        }
+        h1{
+            margin-top: 0;
+            margin-left: 150px;
+            margin-right: 150px;
+            padding: 80px;
+            font-size: 100px;
+            text-align: center;
+            font-family: Verdana;
+            background-color: rgb(1, 133, 186);
+        }
+        
+    </style>
+</head>
+<body onload="showTime()">
+    <p ><b>Digital Clock</b></p>
+    <h1></h1>
+    <div>
+        <button style="margin-left: 450px;padding: 1%; width: 120px;" onclick="startclock()"><b>Start</b></button>
+        <button style="margin-left: 150px;padding: 1%; width: 120px;" onclick="stopclock()"><b>Stop</b></button>
+    </div>
+    <script type="text/javascript">      
+         var intervalRef;
+        function showTime()
+        {
+            var d=new Date();
+            var h=d.getHours();
+            var m=d.getMinutes();
+            var s=d.getSeconds();
+            var session = "AM";
+
+            if(h>=12)
+            {
+                session="PM";
+            }
+            if(h>12)
+            {
+                h=h-12;
+            }
+
+            h=h<10 ? "0"+h : h;
+            m=m<10 ? "0"+m : m;
+            s=s<10 ? "0"+s : s;
+
+            var time=h + ":" + m + ":" + s + " " + session;
+            document.getElementsByTagName('h1')[0].innerText=time;
+            //var xyz=setTimeout(showTime,1000);
+            intervalRef=setTimeout(showTime,1000);
+        }
+        function startclock()
+        {
+            showTime();
+        }  
+        function stopclock()
+        {
+            window.clearTimeout(intervalRef);
+            // clearInterval(xyz);
+        }
+    </script>
+</body>
+</html> -->
